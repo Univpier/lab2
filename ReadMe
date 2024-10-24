@@ -1,0 +1,16 @@
+snort.conf:
+
+//Изменил
+ipvar HOME_NET 10.0.2.0/24  
+//Расскоментил
+preprocessor sfportscan: proto {all} memcap {10000000} sense_level {low}
+Добавил:
+output alert_fast: /var/log/snort/alert.text
+output alert_full: /var/log/snort/alert_full.text
+output alert_csv: /var/log/snort/alert.csv timestamp,msg,src,dst,proto
+
+//Расскоментить если залочена
+include $RULE_PATH/local.rules
+
+//rule
+alert tcp 10.0.2.5 any -> 10.0.2.4 80 (msg:"Nikto scan detected"; sid:1000001; rev:1;)
