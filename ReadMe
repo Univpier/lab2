@@ -14,3 +14,6 @@ include $RULE_PATH/local.rules
 
 //rule
 alert tcp 10.0.2.5 any -> 10.0.2.4 80 (msg:"Nikto scan detected"; sid:1000001; rev:1;)
+
+
+Через встроенные правила не нашёл вариантов сделать
